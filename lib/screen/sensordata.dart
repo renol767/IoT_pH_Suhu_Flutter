@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:slide_countdown_clock/slide_countdown_clock.dart';
+import 'package:analog_clock/analog_clock.dart';
 
 class SensorData extends StatefulWidget {
   @override
@@ -36,6 +36,7 @@ class _SensorDataState extends State<SensorData> {
   Widget build(BuildContext context) {
     DateTime now = new DateTime.now();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text("Monitoring System"),
       ),
@@ -174,55 +175,54 @@ class _SensorDataState extends State<SensorData> {
                           ],
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: now.hour >= 18 && now.hour <= 6
-                            ? CircularPercentIndicator(
-                                radius: 120.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                progressColor: Colors.blueAccent,
-                                percent: now.hour / 24,
-                                center: new Text(
-                                  "${now.hour} :",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 20.0),
-                                ),
+                        child: now.hour >= 6 && now.hour <= 18
+                            ? Column(
+                                children: [
+                                  Padding(padding: EdgeInsets.only(top: 10)),
+                                  AnalogClock(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 2, color: Colors.black),
+                                        color: Colors.transparent,
+                                        shape: BoxShape.circle),
+                                    width: 120,
+                                    height: 120,
+                                    isLive: true,
+                                    datetime: DateTime.now(),
+                                    textScaleFactor: 1.4,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Automatic Feed at 18:00",
+                                    style: TextStyle(fontSize: 13),
+                                  ),
+                                ],
                               )
-                            // ? Container(
-                            //     margin: EdgeInsets.all(16.0),
-                            //     child: Column(
-                            //       mainAxisAlignment: MainAxisAlignment.center,
-                            //       crossAxisAlignment: CrossAxisAlignment.center,
-                            //       children: [
-                            //         Text(
-                            //           "${now.hour} : ${now.minute}",
-                            //           style: TextStyle(
-                            //               fontSize: 20,
-                            //               fontWeight: FontWeight.bold),
-                            //         ),
-                            //         SizedBox(
-                            //           height: 30,
-                            //         ),
-                            //         Text(
-                            //             "Pemberian Pakan Otomatis Selanjutnya Jam 6 Sore",
-                            //             style: TextStyle(
-                            //                 fontSize: 15,
-                            //                 fontWeight: FontWeight.w300))
-                            //       ],
-                            //     ),
-                            //   )
-                            : CircularPercentIndicator(
-                                radius: 120.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                progressColor: Colors.blueAccent,
-                                percent: now.hour / 24,
-                                center: new Text(
-                                  "${now.hour} : ${now.minute}",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 20.0),
-                                ),
+                            : Column(
+                                children: [
+                                  Padding(padding: EdgeInsets.only(top: 10)),
+                                  AnalogClock(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 2, color: Colors.black),
+                                        color: Colors.transparent,
+                                        shape: BoxShape.circle),
+                                    width: 125,
+                                    height: 125,
+                                    isLive: true,
+                                    datetime: DateTime.now(),
+                                    textScaleFactor: 1.4,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Automatic Feed at 06:00",
+                                    style: TextStyle(fontSize: 13),
+                                  ),
+                                ],
                               ))
                   ],
                 );
