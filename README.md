@@ -1,16 +1,21 @@
-# monitoringsuhu
+# Flutter Monitoring Suhu dan pH Air
+Flutter Monitoring Suhu dan pH air menggunakan NodeMCU dan CodeIgniter sebagai API
 
-A new Flutter project.
+## API
 
-## Getting Started
+API, Database and Arduino Code
 
-This project is a starting point for a Flutter application.
+API
+https://github.com/renol767/IoT_pH_Suhu_WebAPI
 
-A few resources to get you started if this is your first Flutter project:
+Database
+https://github.com/renol767/IoT_pH_Suhu_WebAPI/blob/master/sensor.sql
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Arduino Code
+https://github.com/renol767/IoT_pH_Suhu_WebAPI/blob/master/Arduino/Code%20DHT_11MySQL/Code_DHT11_MySQL.ino
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Screenshot
+
+Screenshot Flutter App
+
+![](screenshot/1.png)
