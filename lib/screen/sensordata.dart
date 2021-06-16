@@ -6,7 +6,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:analog_clock/analog_clock.dart';
 
 class SensorData extends StatefulWidget {
   @override
@@ -34,7 +33,6 @@ class _SensorDataState extends State<SensorData> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = new DateTime.now();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -47,10 +45,11 @@ class _SensorDataState extends State<SensorData> {
                   .asyncMap((event) => _sensordata()),
               builder: (context, snapshot) {
                 return GridView.count(
-                  crossAxisCount: 2,
+                  childAspectRatio: 2,
+                  crossAxisCount: 1,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -87,7 +86,7 @@ class _SensorDataState extends State<SensorData> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -124,7 +123,7 @@ class _SensorDataState extends State<SensorData> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -160,70 +159,6 @@ class _SensorDataState extends State<SensorData> {
                         ),
                       ),
                     ),
-                    Container(
-                        margin: EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: now.hour >= 6 && now.hour <= 18
-                            ? Column(
-                                children: [
-                                  Padding(padding: EdgeInsets.only(top: 10)),
-                                  AnalogClock(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 2, color: Colors.black),
-                                        color: Colors.transparent,
-                                        shape: BoxShape.circle),
-                                    width: 120,
-                                    height: 120,
-                                    isLive: true,
-                                    datetime: DateTime.now(),
-                                    textScaleFactor: 1.4,
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Automatic Feed at 18:00",
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                ],
-                              )
-                            : Column(
-                                children: [
-                                  Padding(padding: EdgeInsets.only(top: 10)),
-                                  AnalogClock(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 2, color: Colors.black),
-                                        color: Colors.transparent,
-                                        shape: BoxShape.circle),
-                                    width: 125,
-                                    height: 125,
-                                    isLive: true,
-                                    datetime: DateTime.now(),
-                                    textScaleFactor: 1.4,
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Automatic Feed at 06:00",
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                ],
-                              ))
                   ],
                 );
               }),

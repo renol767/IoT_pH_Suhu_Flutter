@@ -31,7 +31,9 @@ dependencies:
   get_it: ^6.0.0
   http: ^0.12.2
   percent_indicator: "^2.1.7+2"
-  analog_clock: ^0.0.1
+  bottom_navy_bar: ^5.6.0
+  flutter_spinkit: "^4.1.2"
+  charts_flutter: ^0.10.0
 
 dev_dependencies:
   flutter_test:
