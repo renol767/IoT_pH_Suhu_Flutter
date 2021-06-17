@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:monitoringsuhu/screen/graph.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:monitoringsuhu/screen/sensordata.dart';
 import 'package:monitoringsuhu/screen/timeline.dart';
 
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
           onPageChanged: (index) {
             setState(() => _currentIndex = index);
           },
-          children: <Widget>[SensorData(), Graph(), TimeLine()],
+          children: <Widget>[SensorData(), Graph(), ProcessTimelinePage()],
         ),
       ),
       bottomNavigationBar: BottomNavyBar(
@@ -46,15 +47,15 @@ class _HomeState extends State<Home> {
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
               title: Text('Data'),
-              icon: Icon(Icons.data_usage),
+              icon: Icon(FlutterIcons.circular_graph_ent),
               activeColor: Colors.blue),
           BottomNavyBarItem(
               title: Text('Graph'),
-              icon: Icon(Icons.bar_chart),
+              icon: Icon(FlutterIcons.bar_graph_ent),
               activeColor: Colors.green),
           BottomNavyBarItem(
               title: Text('Timeline'),
-              icon: Icon(Icons.timer),
+              icon: Icon(FlutterIcons.timer_sand_mco),
               activeColor: Colors.orangeAccent),
         ],
       ),
