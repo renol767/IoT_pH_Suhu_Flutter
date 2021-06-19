@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:monitoringsuhu/screen/home.dart';
 import 'package:monitoringsuhu/screen/sensordata.dart';
+import 'package:monitoringsuhu/screen/splashscreen.dart';
 import 'package:monitoringsuhu/services/data_services.dart';
 
 void main() async {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: SplashScreen(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:monitoringsuhu/models/datamodel.dart';
 import 'package:monitoringsuhu/services/data_services.dart';
@@ -36,10 +37,16 @@ class _SensorDataState extends State<SensorData> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Monitoring System"),
+        automaticallyImplyLeading: false,
       ),
       body: datas == null
-          ? CircularProgressIndicator()
+          ? Center(
+              child: SpinKitFadingCube(
+              color: Colors.blue,
+              size: 30,
+            ))
           : StreamBuilder(
               stream: Stream.periodic(Duration(seconds: 4))
                   .asyncMap((event) => _sensordata()),
@@ -47,6 +54,7 @@ class _SensorDataState extends State<SensorData> {
                 return GridView.count(
                   childAspectRatio: 2,
                   crossAxisCount: 1,
+                  padding: EdgeInsets.only(top: 15),
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.all(16.0),

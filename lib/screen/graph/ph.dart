@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -16,7 +17,7 @@ class _GraphPHState extends State<GraphPH> {
   Timer timer;
   Future<String> getGraph() async {
     http.Response response =
-        await http.get("http://192.168.1.3/dht11/api/sensorgraph");
+        await http.get("http://iotlobster.masuk.web.id/api/graph");
     setState(() {
       var body = json.decode(response.body.toString());
       listgraph = body;
@@ -41,7 +42,11 @@ class _GraphPHState extends State<GraphPH> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: listgraph == null
-            ? CircularProgressIndicator()
+            ? Center(
+                child: SpinKitFadingCube(
+                color: Colors.blue,
+                size: 30,
+              ))
             : SingleChildScrollView(
                 child: Column(
                   children: [

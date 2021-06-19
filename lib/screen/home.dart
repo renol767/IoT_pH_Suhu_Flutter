@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:flutter/services.dart';
 import 'package:monitoringsuhu/screen/graph.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:monitoringsuhu/screen/sensordata.dart';
 import 'package:monitoringsuhu/screen/timeline.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -26,16 +28,32 @@ class _HomeState extends State<Home> {
     super.dispose();
   }
 
+  DateTime currentBackPressTime;
+  Future<bool> _onWillPop() {
+    DateTime now = DateTime.now();
+    if (currentBackPressTime == null ||
+        now.difference(currentBackPressTime) > Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      Fluttertoast.showToast(msg: "Tekan Lagi Untuk Keluar");
+      return Future.value(false);
+    }
+    SystemNavigator.pop();
+    return Future.value(true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox.expand(
-        child: PageView(
-          controller: _pageController,
-          onPageChanged: (index) {
-            setState(() => _currentIndex = index);
-          },
-          children: <Widget>[SensorData(), Graph(), ProcessTimelinePage()],
+      body: WillPopScope(
+        onWillPop: _onWillPop,
+        child: SizedBox.expand(
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: (index) {
+              setState(() => _currentIndex = index);
+            },
+            children: <Widget>[SensorData(), Graph(), TimeLine()],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavyBar(
