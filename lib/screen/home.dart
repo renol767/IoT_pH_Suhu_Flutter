@@ -72,8 +72,8 @@ class _HomeState extends State<Home> {
               icon: Icon(FlutterIcons.bar_graph_ent),
               activeColor: Colors.green),
           BottomNavyBarItem(
-              title: Text('Timeline'),
-              icon: Icon(FlutterIcons.timer_sand_mco),
+              title: Text('Schedule'),
+              icon: Icon(FlutterIcons.schedule_mdi),
               activeColor: Colors.orangeAccent),
         ],
       ),

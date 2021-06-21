@@ -47,20 +47,23 @@ class _GraphHumState extends State<GraphHum> {
                 color: Colors.blue,
                 size: 30,
               ))
-            : Column(
-                children: [
-                  SizedBox(height: 100),
-                  Text(
-                    "Grafik Humadity",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    height: 500,
-                    child: createChart(),
-                  )
-                ],
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 100),
+                    Text(
+                      "Grafik Humadity",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      height: 500,
+                      child: createChart(),
+                    )
+                  ],
+                ),
               ));
   }
 

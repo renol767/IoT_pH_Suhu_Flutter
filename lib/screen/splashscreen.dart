@@ -22,44 +22,49 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                SizedBox(
-                  height: 140,
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: 140,
+                    ),
+                    Image.asset('assets/logo.png'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 ),
-                Image.asset('assets/logo.png'),
                 SizedBox(
-                  height: 10,
+                  height: 100,
                 ),
+                Column(
+                  children: [
+                    SpinKitFadingCube(
+                      color: Colors.blue,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      'v1.0.0',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                )
               ],
             ),
-            Column(
-              children: [
-                SpinKitFadingCube(
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Text(
-                  'v1.0.0',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
