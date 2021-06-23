@@ -39,7 +39,6 @@ class _TimeLineState extends State<TimeLine> {
     super.initState();
     initializing();
     getFromSharedPreferences();
-    _showNotificationsAfterSecond();
   }
 
   void initializing() async {
@@ -81,7 +80,7 @@ class _TimeLineState extends State<TimeLine> {
   }
 
   Future<void> notificationAfterSec() async {
-    var timeDelayed = DateFormat.yMMMd().parse(dates).add(Duration(days: 10));
+    var timeDelayed = DateTime.now().add(Duration(seconds: 10));
     AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
             'second channel ID', 'second Channel title', 'second channel body',
@@ -98,7 +97,7 @@ class _TimeLineState extends State<TimeLine> {
   }
 
   Future<void> notificationAfterSec1() async {
-    var timeDelayed = DateFormat.yMMMd().parse(dates).add(Duration(days: 30));
+    var timeDelayed = DateTime.now().add(Duration(seconds: 20));
     AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
             'second channel ID', 'second Channel title', 'second channel body',
@@ -115,7 +114,8 @@ class _TimeLineState extends State<TimeLine> {
   }
 
   Future<void> notificationAfterSec2() async {
-    var timeDelayed = DateFormat.yMMMd().parse(dates).add(Duration(days: 60));
+    var timeDelayed = DateTime.now().add(Duration(seconds: 30));
+    // var timeDelayed = DateFormat.yMMMd().parse(dates).add(Duration(days: 60));
     AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
             'second channel ID', 'second Channel title', 'second channel body',
@@ -219,6 +219,22 @@ class _TimeLineState extends State<TimeLine> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Save",
+                  style: TextStyle(fontSize: 20.0, color: Colors.white),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            FlatButton(
+              color: Colors.blue,
+              onPressed: () {
+                _showNotificationsAfterSecond();
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Trigger Notif",
                   style: TextStyle(fontSize: 20.0, color: Colors.white),
                 ),
               ),
